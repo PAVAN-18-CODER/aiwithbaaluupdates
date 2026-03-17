@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily AI news, tools, and insights from AI with Baalu. Stay updated with the latest breakthroughs in artificial intelligence, machine learning, and cutting-edge AI tools.">
+    <meta name="keywords" content="AI news, artificial intelligence, machine learning, AI tools, technology news">
+    <meta name="author" content="AI with Baalu">
+    <meta property="og:title" content="AI with Baalu - Daily AI News & Tools">
+    <meta property="og:description" content="Stay updated with the latest breakthroughs in artificial intelligence and cutting-edge AI tools">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aiwitbaalu.com">
+    <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect fill='%236366f1' width='1200' height='630'/><text x='50%' y='50%' font-size='72' fill='white' text-anchor='middle' dominant-baseline='middle'>AI with Baalu</text></svg>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI with Baalu - Daily AI News & Tools">
+    <meta name="twitter:description" content="Stay updated with the latest AI breakthroughs">
+    <title>AI with Baalu - Daily AI News & Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            50% {
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideInDown 0.5s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a.active {
+            opacity: 1;
+        }
+
+        nav a.active::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.8s ease-out 0.6s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Search Bar */
+        .search-section {
+            padding: 3rem 2rem;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        /* AI News Feed */
+        .news-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .news-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            border: 1px solid var(--border);
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+        .news-card:nth-child(4) { animation-delay: 0.4s; }
+        .news-card:nth-child(5) { animation-delay: 0.5s; }
+        .news-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .news-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.1);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: transform 0.4s ease;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .news-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* Social Share Buttons */
+        .news-share {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .share-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .share-btn:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .share-btn.twitter {
+            background: #1DA1F2;
+        }
+
+        .share-btn.facebook {
+            background: #1877F2;
+        }
+
+        .share-btn.linkedin {
+            background: #0A66C2;
+        }
+
+        .share-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Featured Tools */
+        .tools-section {
+            padding: 3rem 0;
+            background: var(--light);
+            margin-top: 3rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        .tool-card:nth-child(1) { animation-delay: 0.1s; }
+        .tool-card:nth-child(2) { animation-delay: 0.2s; }
+        .tool-card:nth-child(3) { animation-delay: 0.3s; }
+        .tool-card:nth-child(4) { animation-delay: 0.4s; }
+        .tool-card:nth-child(5) { animation-delay: 0.5s; }
+        .tool-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .tool-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 45px rgba(99, 102, 241, 0.25);
+            border-color: var(--primary);
+        }
+
+        .tool-card:hover .tool-icon {
+            animation: pulse 0.6s ease-in-out;
+            color: var(--primary);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .tool-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .tool-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+            animation: slideInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .newsletter-section h2 {
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-section p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 1.5rem auto;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input:focus {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Instagram Integration */
+        .instagram-section {
+            padding: 3rem 0;
+        }
+
+        .instagram-widget {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+            animation: slideInUp 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-widget:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .instagram-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcaf45);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instagram-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .instagram-link:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .instagram-link:hover::before {
+            left: 100%;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 3rem 0;
+            background: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .about-image {
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+            background: rgba(99, 102, 241, 0.02);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🤖</span>
+                <span>AI with Baalu</span>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#tools">Tools</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Daily AI News & Tools</h1>
+        <p>Stay updated with the latest breakthroughs in artificial intelligence, machine learning, and cutting-edge AI tools</p>
+        <button class="cta-button" onclick="document.getElementById('news').scrollIntoView({behavior: 'smooth'})">Explore Now</button>
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search AI news and tools...">
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- AI News Feed -->
+        <section class="news-section" id="news">
+            <h2 class="section-title">Latest AI News</h2>
+            <div class="news-grid" id="newsGrid">
+                <!-- News cards will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Featured Tools -->
+        <section class="tools-section" id="tools">
+            <div class="container">
+                <h2 class="section-title">Featured AI Tools</h2>
+                <div class="tools-grid" id="toolsGrid">
+                    <!-- Tool cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <h2>📬 Get Daily AI Updates</h2>
+            <p>Subscribe to our newsletter for curated AI news and tool recommendations</p>
+            <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="cta-button">Subscribe</button>
+            </form>
+        </section>
+
+        <!-- Instagram Section -->
+        <section class="instagram-section">
+            <h2 class="section-title">Follow Us on Instagram</h2>
+            <div class="instagram-widget">
+                <p>📱 Join our community for daily AI updates, short tutorials, and industry news</p>
+                <p style="font-size: 1.5rem; margin: 1rem 0;">@aiwitbaalu</p>
+                <a href="https://instagram.com/aiwitbaalu" target="_blank" class="instagram-link">Follow on Instagram</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <h2 class="section-title">About AI with Baalu</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Staying Ahead in the AI Revolution</h2>
+                    <p>Welcome to AI with Baalu! We're dedicated to bringing you the latest news, tools, and insights about artificial intelligence.</p>
+                    <p>Our mission is to make AI knowledge accessible to everyone, from beginners to experts. We cover everything from breakthrough research to practical tools you can use today.</p>
+                    <p>Join thousands of followers who stay informed about the AI industry's evolution.</p>
+                </div>
+                <div class="about-image">🚀</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form" onsubmit="handleContactForm(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI with Baalu</h3>
+            <p>Your daily source for AI news, tools, and insights</p>
+            <div class="social-links">
+                <a href="https://instagram.com/aiwitbaalu" target="_blank" title="Instagram">📱</a>
+                <a href="https://twitter.com" target="_blank" title="Twitter">🐦</a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn">💼</a>
+            </div>
+            <p>&copy; 2024 AI with Baalu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample AI News Data
+        const newsData = [
+            {
+                id: 1,
+                emoji: '🧠',
+                title: 'OpenAI Releases GPT-5',
+                excerpt: 'Revolutionary new AI model with improved reasoning and understanding capabilities.',
+                date: new Date().toLocaleDateString(),
+                category: 'LLM'
+            },
+            {
+                id: 2,
+                emoji: '🤖',
+                title: 'Google DeepMind Breakthrough',
+                excerpt: 'New AI system achieves superhuman performance in scientific discovery.',
+                date: new Date(Date.now() - 86400000).toLocaleDateString(),
+                category: 'Research'
+            },
+            {
+                id: 3,
+                emoji: '🎨',
+                title: 'Text-to-Image Models Evolve',
+                excerpt: 'Latest DALL-E update produces photorealistic images with fine details.',
+                date: new Date(Date.now() - 172800000).toLocaleDateString(),
+                category: 'Vision'
+            },
+            {
+                id: 4,
+                emoji: '⚡',
+                title: 'Efficient AI Models Rise',
+                excerpt: 'New tiny language models challenge larger competitors in speed and efficiency.',
+                date: new Date(Date.now() - 259200000).toLocaleDateString(),
+                category: 'Optimization'
+            },
+            {
+                id: 5,
+                emoji: '🔒',
+                title: 'AI Safety Standards Announced',
+                excerpt: 'Industry adopts new guidelines for responsible AI development and deployment.',
+                date: new Date(Date.now() - 345600000).toLocaleDateString(),
+                category: 'Ethics'
+            },
+            {
+                id: 6,
+                emoji: '💻',
+                title: 'AI Coding Assistants Level Up',
+                excerpt: 'Latest version of GitHub Copilot now understands context across entire codebases.',
+                date: new Date(Date.now() - 432000000).toLocaleDateString(),
+                category: 'Tools'
+            }
+        ];
+
+        // Sample Tools Data
+        const toolsData = [
+            {
+                icon: '🤖',
+                name: 'ChatGPT',
+                description: 'Advanced conversational AI for any task'
+            },
+            {
+                icon: '🎨',
+                name: 'DALL-E 3',
+                description: 'Create stunning images from text descriptions'
+            },
+            {
+                icon: '💻',
+                name: 'GitHub Copilot',
+                description: 'AI-powered code completion and generation'
+            },
+            {
+                icon: '🔍',
+                name: 'Perplexity AI',
+                description: 'Search engine powered by AI'
+            },
+            {
+                icon: '📊',
+                name: 'MidJourney',
+                description: 'Professional AI art generation'
+            },
+            {
+                icon: '🎬',
+                name: 'Synthesia',
+                description: 'Create AI videos with avatars'
+            }
+        ];
+
+        // Populate News Cards
+        function populateNews(data = newsData) {
+            const newsGrid = document.getElementById('newsGrid');
+            newsGrid.innerHTML = data.map(item => `
+                <div class="news-card">
+                    <div class="news-image">${item.emoji}</div>
+                    <div class="news-content">
+                        <span class="news-date">${item.date} • ${item.category}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.excerpt}</p>
+                        <a href="#" class="read-more">Read More →</a>
+                        <div class="news-share">
+                            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(item.title)}&url=${window.location.href}" target="_blank" class="share-btn twitter" title="Share on Twitter">𝕏</a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=${window.location.href}" target="_blank" class="share-btn facebook" title="Share on Facebook">f</a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}" target="_blank" class="share-btn linkedin" title="Share on LinkedIn">in</a>
+                            <a href="https://wa.me/?text=${encodeURIComponent(item.title + ' ' + window.location.href)}" target="_blank" class="share-btn whatsapp" title="Share on WhatsApp">W</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Populate Tools
+        function populateTools() {
+            const toolsGrid = document.getElementById('toolsGrid');
+            toolsGrid.innerHTML = toolsData.map(tool => `
+                <div class="tool-card">
+                    <div class="tool-icon">${tool.icon}</div>
+                    <h3>${tool.name}</h3>
+                    <p>${tool.description}</p>
+                    <a href="#" class="tool-link">Learn More →</a>
+                </div>
+            `).join('');
+        }
+
+        // Search Functionality
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = newsData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.excerpt.toLowerCase().includes(query)
+            );
+            populateNews(filtered);
+        });
+
+        // Newsletter Signup
+        function handleNewsletterSignup(event) {
+            event.preventDefault();
+            alert('Thank you for subscribing! Check your email for confirmation.');
+            event.target.reset();
+        }
+
+        // Contact Form
+        function handleContactForm(event) {
+            event.preventDefault();
+            alert('Message sent! We\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Dynamic Navigation Handler
+        function setupDynamicNavigation() {
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section[id]');
+
+            // Scroll event for active link highlighting
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').slice(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth click navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').slice(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            populateNews();
+            populateTools();
+            setupDynamicNavigation();
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <!-- Replace YOUR_GA_ID with your actual Google Analytics ID (format: G-XXXXXXXXXX) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_GA_ID');
+    </script>
+</body>
+</html>
