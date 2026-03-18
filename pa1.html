@@ -1224,97 +1224,145 @@
     </footer>
 
     <script>
-        // Sample AI News Data
-        const newsData = [
-            {
-                id: 1,
-                emoji: '🧠',
-                title: 'OpenAI Releases GPT-5',
-                excerpt: 'Revolutionary new AI model with improved reasoning and understanding capabilities.',
-                date: new Date().toLocaleDateString(),
-                category: 'LLM',
-                fullContent: 'OpenAI has officially announced GPT-5, the latest iteration in their language model series. This breakthrough model features significantly improved reasoning capabilities, better context understanding, and reduced hallucinations. Available for researchers and enterprise clients starting next month.'
-            },
-            {
-                id: 2,
-                emoji: '🤖',
-                title: 'Google DeepMind Breakthrough',
-                excerpt: 'New AI system achieves superhuman performance in scientific discovery.',
-                date: new Date(Date.now() - 86400000).toLocaleDateString(),
-                category: 'Research',
-                fullContent: 'Google DeepMind has unveiled AlphaDiscover, an AI system that has already contributed to 10 new scientific breakthroughs in protein folding and molecular research. The system can analyze complex patterns that human researchers might miss.'
-            },
-            {
-                id: 3,
-                emoji: '🎨',
-                title: 'Text-to-Image Models Evolve',
-                excerpt: 'Latest DALL-E update produces photorealistic images with fine details.',
-                date: new Date(Date.now() - 172800000).toLocaleDateString(),
-                category: 'Vision',
-                fullContent: 'DALL-E 4 has been released with significantly improved photorealism and fine detail rendering. The new model can now understand complex spatial relationships and generate consistent object interactions within a single image.'
-            },
-            {
-                id: 4,
-                emoji: '⚡',
-                title: 'Efficient AI Models Rise',
-                excerpt: 'New tiny language models challenge larger competitors in speed and efficiency.',
-                date: new Date(Date.now() - 259200000).toLocaleDateString(),
-                category: 'Optimization',
-                fullContent: 'A new wave of ultra-efficient language models is showing that you don\'t need billions of parameters for excellent performance. These models run on edge devices and are becoming the standard for mobile AI applications.'
-            },
-            {
-                id: 5,
-                emoji: '🔒',
-                title: 'AI Safety Standards Announced',
-                excerpt: 'Industry adopts new guidelines for responsible AI development and deployment.',
-                date: new Date(Date.now() - 345600000).toLocaleDateString(),
-                category: 'Ethics',
-                fullContent: 'The Global AI Alliance has released comprehensive safety and ethics guidelines for AI development. These standards are now being adopted by major tech companies and will shape the future of responsible AI.'
-            },
-            {
-                id: 6,
-                emoji: '💻',
-                title: 'AI Coding Assistants Level Up',
-                excerpt: 'Latest version of GitHub Copilot now understands context across entire codebases.',
-                date: new Date(Date.now() - 432000000).toLocaleDateString(),
-                category: 'Tools',
-                fullContent: 'GitHub Copilot now features whole-codebase understanding, allowing it to provide suggestions based on your entire project context. This significantly improves code quality and reduces bugs in production environments.'
-            }
-        ];
+        // ===== BACKEND API CONFIGURATION =====
+        const API_BASE_URL = 'http://localhost:3000/api';
+        let newsData = [];
+        let toolsData = [];
 
-        // Sample Tools Data
-        const toolsData = [
-            {
-                icon: '🤖',
-                name: 'ChatGPT',
-                description: 'Advanced conversational AI for any task'
-            },
-            {
-                icon: '🎨',
-                name: 'DALL-E 3',
-                description: 'Create stunning images from text descriptions'
-            },
-            {
-                icon: '💻',
-                name: 'GitHub Copilot',
-                description: 'AI-powered code completion and generation'
-            },
-            {
-                icon: '🔍',
-                name: 'Perplexity AI',
-                description: 'Search engine powered by AI'
-            },
-            {
-                icon: '📊',
-                name: 'MidJourney',
-                description: 'Professional AI art generation'
-            },
-            {
-                icon: '🎬',
-                name: 'Synthesia',
-                description: 'Create AI videos with avatars'
+        // ===== API CALLS =====
+        async function fetchNewsFromBackend() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/news`);
+                if (!response.ok) throw new Error('Failed to fetch news');
+                const result = await response.json();
+                
+                // Format dates for display
+                newsData = result.data.map(item => ({
+                    ...item,
+                    date: new Date(item.date).toLocaleDateString()
+                }));
+                
+                console.log('✅ News fetched from backend:', newsData.length, 'articles');
+                return newsData;
+            } catch (error) {
+                console.warn('⚠️  Could not connect to backend. Using fallback data.', error.message);
+                loadFallbackNews();
+                return newsData;
             }
-        ];
+        }
+
+        async function fetchToolsFromBackend() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/tools`);
+                if (!response.ok) throw new Error('Failed to fetch tools');
+                const result = await response.json();
+                
+                toolsData = result.data;
+                console.log('✅ Tools fetched from backend:', toolsData.length, 'tools');
+                return toolsData;
+            } catch (error) {
+                console.warn('⚠️  Could not connect to backend. Using fallback data.', error.message);
+                loadFallbackTools();
+                return toolsData;
+            }
+        }
+
+        // ===== FALLBACK DATA (used when backend is unavailable) =====
+        function loadFallbackNews() {
+            newsData = [
+                {
+                    _id: '1',
+                    emoji: '🧠',
+                    title: 'OpenAI Releases GPT-5',
+                    excerpt: 'Revolutionary new AI model with improved reasoning and understanding capabilities.',
+                    date: new Date().toLocaleDateString(),
+                    category: 'LLM',
+                    fullContent: 'OpenAI has officially announced GPT-5, the latest iteration in their language model series. This breakthrough model features significantly improved reasoning capabilities, better context understanding, and reduced hallucinations. Available for researchers and enterprise clients starting next month.'
+                },
+                {
+                    _id: '2',
+                    emoji: '🤖',
+                    title: 'Google DeepMind Breakthrough',
+                    excerpt: 'New AI system achieves superhuman performance in scientific discovery.',
+                    date: new Date(Date.now() - 86400000).toLocaleDateString(),
+                    category: 'Research',
+                    fullContent: 'Google DeepMind has unveiled AlphaDiscover, an AI system that has already contributed to 10 new scientific breakthroughs in protein folding and molecular research. The system can analyze complex patterns that human researchers might miss.'
+                },
+                {
+                    _id: '3',
+                    emoji: '🎨',
+                    title: 'Text-to-Image Models Evolve',
+                    excerpt: 'Latest DALL-E update produces photorealistic images with fine details.',
+                    date: new Date(Date.now() - 172800000).toLocaleDateString(),
+                    category: 'Vision',
+                    fullContent: 'DALL-E 4 has been released with significantly improved photorealism and fine detail rendering. The new model can now understand complex spatial relationships and generate consistent object interactions within a single image.'
+                },
+                {
+                    _id: '4',
+                    emoji: '⚡',
+                    title: 'Efficient AI Models Rise',
+                    excerpt: 'New tiny language models challenge larger competitors in speed and efficiency.',
+                    date: new Date(Date.now() - 259200000).toLocaleDateString(),
+                    category: 'Optimization',
+                    fullContent: 'A new wave of ultra-efficient language models is showing that you don\'t need billions of parameters for excellent performance. These models run on edge devices and are becoming the standard for mobile AI applications.'
+                },
+                {
+                    _id: '5',
+                    emoji: '🔒',
+                    title: 'AI Safety Standards Announced',
+                    excerpt: 'Industry adopts new guidelines for responsible AI development and deployment.',
+                    date: new Date(Date.now() - 345600000).toLocaleDateString(),
+                    category: 'Ethics',
+                    fullContent: 'The Global AI Alliance has released comprehensive safety and ethics guidelines for AI development. These standards are now being adopted by major tech companies and will shape the future of responsible AI.'
+                },
+                {
+                    _id: '6',
+                    emoji: '💻',
+                    title: 'AI Coding Assistants Level Up',
+                    excerpt: 'Latest version of GitHub Copilot now understands context across entire codebases.',
+                    date: new Date(Date.now() - 432000000).toLocaleDateString(),
+                    category: 'Tools',
+                    fullContent: 'GitHub Copilot now features whole-codebase understanding, allowing it to provide suggestions based on your entire project context. This significantly improves code quality and reduces bugs in production environments.'
+                }
+            ];
+            console.log('📘 Using fallback news data');
+        }
+
+        function loadFallbackTools() {
+            toolsData = [
+                {
+                    icon: '🤖',
+                    name: 'ChatGPT',
+                    description: 'Advanced conversational AI for any task'
+                },
+                {
+                    icon: '🎨',
+                    name: 'DALL-E 3',
+                    description: 'Create stunning images from text descriptions'
+                },
+                {
+                    icon: '💻',
+                    name: 'GitHub Copilot',
+                    description: 'AI-powered code completion and generation'
+                },
+                {
+                    icon: '🔍',
+                    name: 'Perplexity AI',
+                    description: 'Search engine powered by AI'
+                },
+                {
+                    icon: '📊',
+                    name: 'MidJourney',
+                    description: 'Professional AI art generation'
+                },
+                {
+                    icon: '🎬',
+                    name: 'Synthesia',
+                    description: 'Create AI videos with avatars'
+                }
+            ];
+            console.log('📘 Using fallback tools data');
+        }
 
         // ===== THEME TOGGLE =====
         function initThemeToggle() {
@@ -1417,27 +1465,50 @@
         // Populate News Cards
         function populateNews(data = newsData) {
             const newsGrid = document.getElementById('newsGrid');
-            newsGrid.innerHTML = data.map(item => `
-                <div class="news-card" onclick="openNewsModal(event.currentTarget.newsItem)">
-                    <div class="news-image">${item.emoji}</div>
+            newsGrid.innerHTML = data.map((item, index) => {
+                const itemId = item._id || item.id || index;
+                return `
+                <div class="news-card" data-news-id="${itemId}">
+                    <div class="news-image">${item.emoji || '📰'}</div>
                     <div class="news-content">
-                        <span class="news-date">${item.date} • ${item.category}</span>
+                        <span class="news-date">${item.date || new Date().toLocaleDateString()} • ${item.category || 'News'}</span>
                         <h3>${item.title}</h3>
                         <p>${item.excerpt}</p>
-                        <a href="#" class="read-more" onclick="event.stopPropagation(); openNewsModal(newsData[${newsData.indexOf(item)}])">Read More →</a>
+                        <a href="#" class="read-more">Read More →</a>
                         <div class="news-share">
-                            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(item.title)}&url=${window.location.href}" target="_blank" class="share-btn twitter" title="Share on Twitter" onclick="event.stopPropagation()">𝕏</a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=${window.location.href}" target="_blank" class="share-btn facebook" title="Share on Facebook" onclick="event.stopPropagation()">f</a>
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}" target="_blank" class="share-btn linkedin" title="Share on LinkedIn" onclick="event.stopPropagation()">in</a>
-                            <a href="https://wa.me/?text=${encodeURIComponent(item.title + ' ' + window.location.href)}" target="_blank" class="share-btn whatsapp" title="Share on WhatsApp" onclick="event.stopPropagation()">W</a>
+                            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(item.title)}&url=${window.location.href}" target="_blank" class="share-btn twitter" title="Share on Twitter">𝕏</a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=${window.location.href}" target="_blank" class="share-btn facebook" title="Share on Facebook">f</a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}" target="_blank" class="share-btn linkedin" title="Share on LinkedIn">in</a>
+                            <a href="https://wa.me/?text=${encodeURIComponent(item.title + ' ' + window.location.href)}" target="_blank" class="share-btn whatsapp" title="Share on WhatsApp">W</a>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
 
-            // Attach newsItem data to each card
+            // Attach click handlers to all news cards
             document.querySelectorAll('.news-card').forEach((card, index) => {
-                card.newsItem = data[index];
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const newsItem = data[index];
+                    openNewsModal(newsItem);
+                });
+                
+                // Add click handler to "Read More" link
+                const readMoreLink = card.querySelector('.read-more');
+                if (readMoreLink) {
+                    readMoreLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openNewsModal(data[index]);
+                    });
+                }
+                
+                // Add click handlers to share buttons
+                card.querySelectorAll('.share-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                });
             });
         }
 
@@ -1449,9 +1520,19 @@
                     <div class="tool-icon">${tool.icon}</div>
                     <h3>${tool.name}</h3>
                     <p>${tool.description}</p>
-                    <a href="#" class="tool-link">Learn More →</a>
+                    <a href="${tool.link || '#'}" target="_blank" class="tool-link">Learn More →</a>
                 </div>
             `).join('');
+
+            // Add hover effects to tool cards
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.05)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
         }
 
         // Search Functionality
@@ -1468,16 +1549,62 @@
         function handleNewsletterSignup(event) {
             event.preventDefault();
             const email = event.target.querySelector('input[type="email"]').value;
-            showNotification(`✉️ Subscribed with ${email}!`, 'success');
-            event.target.reset();
+            
+            // Try to save to backend
+            fetch(`${API_BASE_URL}/newsletter/subscribe`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(`✉️ ${data.message}`, 'success');
+                } else {
+                    showNotification(`ℹ️ ${data.message}`, 'info');
+                }
+                event.target.reset();
+            })
+            .catch(error => {
+                // If backend fails, show local notification
+                console.warn('Newsletter backend unavailable:', error.message);
+                showNotification(`✉️ Subscribed with ${email}!`, 'success');
+                event.target.reset();
+            });
         }
 
         // Contact Form
         function handleContactForm(event) {
             event.preventDefault();
             const name = event.target.querySelector('input[name="name"]').value;
-            showNotification(`📬 Message received! Thanks ${name}, we'll be in touch soon!`, 'success');
-            event.target.reset();
+            const email = event.target.querySelector('input[name="email"]').value;
+            const message = event.target.querySelector('textarea[name="message"]').value;
+            
+            // Try to save to backend
+            fetch(`${API_BASE_URL}/contact/submit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(`📬 ${data.message}`, 'success');
+                } else {
+                    showNotification(`ℹ️ ${data.message}`, 'info');
+                }
+                event.target.reset();
+            })
+            .catch(error => {
+                // If backend fails, show local notification
+                console.warn('Contact backend unavailable:', error.message);
+                showNotification(`📬 Message received! Thanks ${name}, we'll be in touch soon!`, 'success');
+                event.target.reset();
+            });
         }
 
         // Dynamic Navigation Handler
@@ -1553,34 +1680,89 @@
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            populateNews();
-            populateTools();
-            setupDynamicNavigation();
-            initThemeToggle();
-            initFilters();
+        document.addEventListener('DOMContentLoaded', async () => {
+            const loader = showLoadingState();
             
-            // Start animated counters when stats section is visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        animateCounters();
-                        entry.target.classList.add('animated');
-                    }
+            try {
+                // Fetch data from backend
+                await Promise.all([
+                    fetchNewsFromBackend(),
+                    fetchToolsFromBackend()
+                ]);
+                
+                // Check if we have data
+                if (newsData.length === 0) {
+                    showNotification('📡 Backend not connected - using sample data', 'info');
+                }
+                
+                // Populate UI
+                populateNews();
+                populateTools();
+                setupDynamicNavigation();
+                initThemeToggle();
+                initFilters();
+                
+                // Start animated counters when stats section is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                            animateCounters();
+                            entry.target.classList.add('animated');
+                        }
+                    });
                 });
-            });
-            
-            const statsSection = document.querySelector('.stats-section');
-            if (statsSection) {
-                observer.observe(statsSection);
+                
+                const statsSection = document.querySelector('.stats-section');
+                if (statsSection) {
+                    observer.observe(statsSection);
+                }
+
+                // Simulate live updates
+                simulateLiveUpdates();
+
+                // Welcome notification
+                showNotification('🎉 Welcome to AI with Baalu!', 'success');
+                
+                // Log connection status
+                try {
+                    const healthCheck = await fetch(`${API_BASE_URL}/health`);
+                    if (healthCheck.ok) {
+                        console.log('✅ Backend API is connected');
+                        showNotification('✅ Connected to backend', 'success');
+                    }
+                } catch (e) {
+                    console.warn('ℹ️  Backend not available - using local data');
+                }
+            } catch (error) {
+                console.error('Error initializing app:', error);
+                showNotification('⚠️  Error loading data - using sample data', 'info');
             }
-
-            // Simulate live updates
-            simulateLiveUpdates();
-
-            // Welcome notification
-            showNotification('🎉 Welcome to AI with Baalu!', 'success');
+            
+            if (loader) loader.remove();
         });
+
+        function showLoadingState() {
+            const loader = document.createElement('div');
+            loader.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            `;
+            loader.innerHTML = `
+                <div style="color: white; font-size: 1.5rem;">
+                    📡 Connecting to backend...
+                </div>
+            `;
+            document.body.appendChild(loader);
+            return loader;
+        }
     </script>
 
     <!-- Google Analytics -->

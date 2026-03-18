@@ -1,0 +1,232 @@
+{
+  "info": {
+    "name": "AI with Baalu - Backend API",
+    "description": "Complete API collection for AI with Baalu backend testing",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Health & Status",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "health"]
+            },
+            "description": "Check if backend is running"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "News Endpoints",
+      "item": [
+        {
+          "name": "Get All News",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/news",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "news"]
+            },
+            "description": "Get all news articles"
+          },
+          "response": []
+        },
+        {
+          "name": "Get News by Category - LLM",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/news?category=LLM",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "news"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "LLM"
+                }
+              ]
+            },
+            "description": "Get news filtered by LLM category"
+          },
+          "response": []
+        },
+        {
+          "name": "Get News by Category - Research",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/news?category=Research",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "news"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "Research"
+                }
+              ]
+            },
+            "description": "Get news filtered by Research category"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Featured News Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/news?featured=true",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "news"],
+              "query": [
+                {
+                  "key": "featured",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Get only featured news articles"
+          },
+          "response": []
+        },
+        {
+          "name": "Get News with Pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/news?limit=3&skip=0",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "news"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "3"
+                },
+                {
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Get news with limit and skip for pagination"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Specific News by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/news/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "news", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REPLACE_WITH_NEWS_ID",
+                  "description": "ID from any news article"
+                }
+              ]
+            },
+            "description": "Get a specific news article by ID"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tools Endpoints",
+      "item": [
+        {
+          "name": "Get All Tools",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/tools",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "tools"]
+            },
+            "description": "Get all AI tools"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Featured Tools Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/tools?featured=true",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "tools"],
+              "query": [
+                {
+                  "key": "featured",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Get only featured tools"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Specific Tool by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/tools/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "tools", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REPLACE_WITH_TOOL_ID",
+                  "description": "ID from any tool"
+                }
+              ]
+            },
+            "description": "Get a specific tool by ID"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
