@@ -1,0 +1,18 @@
+[build]
+  command = "# No build needed - static HTML"
+  publish = "."
+
+[[redirects]]
+  from = "/api/*"
+  to = "YOUR_RENDER_URL/api/:splat"
+  status = 200
+
+[dev]
+  framework = "html"
+  port = 3000
+
+# SPA redirect for any routes
+[[redirects]]
+  from = "/*"
+  to = "/pa1.html"
+  status = 200

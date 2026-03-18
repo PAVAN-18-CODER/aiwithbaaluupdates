@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ai-with-baalu-backend
+    runtime: node
+    region: ohio
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: MONGODB_URI
+        scope: build
+        value: mongodb+srv://admin@cluster0.mongodb.net/ai-news-db?retryWrites=true&w=majority
+      - key: PORT
+        value: "3000"
+      - key: NODE_ENV
+        value: production
