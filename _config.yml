@@ -1,0 +1,6 @@
+# GitHub Pages Configuration for AI with Baalu
+# Disable Jekyll processing
+markdown: kramdown
+theme: null
+plugins: []
+exclude: [.git, .gitignore, node_modules, backend/]

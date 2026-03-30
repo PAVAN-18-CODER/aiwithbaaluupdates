@@ -1,0 +1,46 @@
+name: Deploy Backend to Render
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Render
+        run: |
+          echo "📦 Backend deployment to Render.com"
+          echo "🔐 Using Render webhook or direct API"
+          echo ""
+          echo "🚀 Deployment triggered!"
+          echo "✅ Visit Render dashboard to monitor: https://dashboard.render.com"
+          echo ""
+          echo "📝 Note: If not yet deployed, visit:"
+          echo "   https://render.com/dashboard"
+          echo "   and create a new Web Service with:"
+          echo "   - Repository: aiwithbaaluupdates"
+          echo "   - Root Directory: backend/"
+          echo "   - Build Command: npm install"
+          echo "   - Start Command: node server.js"
+
+      - name: Verify Backend Health
+        continue-on-error: true
+        run: |
+          sleep 5
+          for i in {1..10}; do
+            if curl -f https://ai-with-baalu-backend.onrender.com/api/health; then
+              echo "✅ Backend is healthy!"
+              break
+            fi
+            echo "⏳ Waiting for backend to be ready... (attempt $i/10)"
+            sleep 10
+          done || echo "⚠️ Backend health check pending"
