@@ -7,7 +7,15 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5500', 'file://'],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5500',
+    'file://',
+    'https://PAVAN-18-CODER.github.io',
+    /render\.com$/,
+    /netlify\.app$/,
+    /onrender\.com$/
+  ],
   credentials: true
 }));
 app.use(express.json());
