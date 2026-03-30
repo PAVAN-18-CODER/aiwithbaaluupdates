@@ -3,6 +3,7 @@ services:
     name: ai-with-baalu-backend
     runtime: node
     region: ohio
+    plan: free
     buildCommand: cd backend && npm install
     startCommand: cd backend && node server.js
     envVars:
@@ -13,3 +14,9 @@ services:
         value: "3000"
       - key: NODE_ENV
         value: production
+      - key: LOG_LEVEL
+        value: info
+    autoDeploy: true
+    healthCheckPath: /api/health
+    maxInstances: 1
+    preDeployCommand: cd backend && npm install
