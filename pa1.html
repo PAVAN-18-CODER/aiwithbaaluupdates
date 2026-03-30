@@ -1225,7 +1225,12 @@
 
     <script>
         // ===== BACKEND API CONFIGURATION =====
-        const API_BASE_URL = 'http://localhost:3000/api';
+        // Auto-detect API URL based on environment
+        const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:3000/api'
+            : 'https://ai-with-baalu-backend.onrender.com/api'; // Update this with your actual Render URL
+        
+        console.log('🔌 Using API:', API_BASE_URL);
         let newsData = [];
         let toolsData = [];
 
