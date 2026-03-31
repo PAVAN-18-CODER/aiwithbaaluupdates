@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced IoT Fraud Detection System - Real-time anomaly detection for IoT devices using machine learning and behavioral analysis.">
+    <meta name="keywords" content="IoT fraud detection, anomaly detection, machine learning, IoT security, cybersecurity">
+    <meta name="author" content="AI with Baalu">
+    <meta property="og:title" content="IoT Fraud Detection System - Real-Time Security">
+    <meta property="og:description" content="Advanced IoT Fraud Detection System using machine learning and behavioral analysis">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect fill='%23ef4444' width='1200' height='630'/><text x='50%' y='50%' font-size='72' fill='white' text-anchor='middle' dominant-baseline='middle'>IoT Fraud Detection</text></svg>">
+    <title>IoT Fraud Detection System - Real-Time Security</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ef4444;
+            --secondary: #dc2626;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --bg: #ffffff;
+            --text: #333333;
+            --card-bg: #f9fafb;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Architecture Section */
+        .architecture {
+            background: var(--light);
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .tech-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* How It Works */
+        .workflow {
+            margin: 3rem 0;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--border);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .workflow-steps, .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Alert Styles */
+        .alert {
+            background: #fef2f2;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .alert-title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert p {
+            color: #666;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🛡️</span>
+                IoT Fraud Detection
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="iot-fraud-detection.html">IoT System</a>
+                <a href="pa1.html">Dashboard</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🛡️ IoT Fraud Detection System</h1>
+            <p class="tagline">Real-Time Anomaly Detection & Security for IoT Devices</p>
+            <p class="tagline" style="font-size: 1rem; opacity: 0.8;">Powered by Machine Learning & Advanced Behavioral Analysis</p>
+            <button class="cta-button">View Demo</button>
+            <button class="cta-button">Documentation</button>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What is IoT Fraud Detection?</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 800px; margin: 0 auto 2rem;">
+                Our advanced IoT Fraud Detection System uses artificial intelligence and machine learning to identify 
+                suspicious activities in real-time. It analyzes device behavior patterns, network traffic anomalies, 
+                and security threats to protect your IoT ecosystem from unauthorized access and fraudulent operations.
+            </p>
+            
+            <div class="alert">
+                <div class="alert-title">🔒 Enterprise-Grade Security</div>
+                <p>Detect fraud attempts before they impact your systems with real-time anomaly detection and behavioral analysis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="section" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Monitoring</h3>
+                    <p>Monitor all connected IoT devices in real-time with instant alerts for suspicious activities and anomalies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Machine Learning Models</h3>
+                    <p>Advanced ML algorithms that learn normal behavior patterns and detect deviations with high accuracy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Behavioral Analysis</h3>
+                    <p>Analyze device behavior, user patterns, and network signatures to identify fraudulent activities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Low Latency Processing</h3>
+                    <p>Process data streams with minimal delay for immediate threat detection and response.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Protocol Support</h3>
+                    <p>Compatible with MQTT, CoAP, HTTP/HTTPS, and other IoT communication protocols.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Detailed Analytics</h3>
+                    <p>Comprehensive reports and dashboards showing threat patterns, trends, and risk assessment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Data Collection</h3>
+                    <p>Collect data from all IoT devices including device metrics, network traffic, and user actions.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Feature Engineering</h3>
+                    <p>Extract relevant features and normalize data for machine learning model processing.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Anomaly Detection</h3>
+                    <p>Apply ML models to identify deviations from normal behavior and potential threats.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Alert & Response</h3>
+                    <p>Trigger real-time alerts and automated responses to neutralize threats immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="section" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="architecture">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem; text-align: center;">Backend & ML Infrastructure</h3>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h4>Python 3.11</h4>
+                        <p>Core language for data processing and ML models</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Apache Kafka</h4>
+                        <p>Real-time data stream processing and ingestion</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>TensorFlow / PyTorch</h4>
+                        <p>Deep learning models for pattern recognition</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Scikit-Learn</h4>
+                        <p>Classical ML algorithms for anomaly detection</p>
+                    </div>
+                </div>
+                <div class="tech-stack" style="margin-top: 1.5rem;">
+                    <div class="tech-item">
+                        <h4>PostgreSQL</h4>
+                        <p>Structured data storage and queries</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>MongoDB</h4>
+                        <p>Document storage for flexible data structures</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Redis</h4>
+                        <p>Caching and real-time data operations</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Elasticsearch</h4>
+                        <p>Log indexing and analytics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">System Performance</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">&lt;100ms</div>
+                    <div class="stat-label">Detection Latency</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Events/Second</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">99.8%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="section" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Use Cases</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <h3>Industrial IoT (IIoT)</h3>
+                    <p>Protect manufacturing equipment and industrial sensors from cyber attacks and unauthorized modifications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Healthcare Devices</h3>
+                    <p>Secure medical IoT devices and ensure patient data privacy with continuous monitoring.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Connected vehicles</h3>
+                    <p>Detect tampering and malicious behavior in vehicle control systems and connected car networks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Smart Homes</h3>
+                    <p>Protect home automation systems and personal IoT devices from unauthorized access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Smart Grid</h3>
+                    <p>Monitor power grid IoT devices and detect anomalies in energy distribution systems.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Telecom Networks</h3>
+                    <p>Secure IoT devices in telecommunications infrastructure and detect network-level threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Getting Started</h2>
+            <div class="workflow-steps">
+                <div class="step">
+                    <h3>📋 Assessment</h3>
+                    <p>Evaluate your IoT infrastructure and identify protection requirements.</p>
+                </div>
+                <div class="step">
+                    <h3>🔧 Deployment</h3>
+                    <p>Deploy detection agents and configure data streaming from your devices.</p>
+                </div>
+                <div class="step">
+                    <h3>🎓 Training</h3>
+                    <p>Train ML models on your normal behavior baseline data.</p>
+                </div>
+                <div class="step">
+                    <h3>🚀 Monitoring</h3>
+                    <p>Activate real-time fraud detection and start protecting your IoT ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>IoT Fraud Detection System</h3>
+            <p>Advanced Security for Connected Devices</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#documentation">Documentation</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">
+                © 2026 AI with Baalu. All rights reserved. | 
+                <a href="https://github.com/PAVAN-18-CODER/aiwithbaaluupdates" style="color: white; text-decoration: underline;">GitHub Repository</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
