@@ -1,0 +1,32 @@
+# Robots.txt for AI with Baalu - GitHub Pages
+# Allow search engines to crawl all public pages
+
+User-agent: *
+Allow: /
+Allow: *.html
+Allow: *.css
+Allow: *.js
+Allow: *.json
+Allow: *.xml
+
+# Disallow private directories
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /backend/
+
+# Allow search engines specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Sitemap location
+Sitemap: https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/sitemap.xml
+
+# Crawl delay (in seconds) - be respectful
+Crawl-delay: 1

@@ -1,18 +1,27 @@
-# 🤖 AI with Baalu - Complete Full-Stack Website
+# 🤖 AI with Baalu - Enterprise Platform
 
-**A Professional Full-Stack Website for AI News & Tools Discovery**
+**A Professional Full-Stack Platform with AI News, Tools, and IoT Security Solutions**
 
 [![GitHub](https://img.shields.io/badge/GitHub-View_Repo-blue)](https://github.com/PAVAN-18-CODER/aiwithbaaluupdates)
 [![Website](https://img.shields.io/badge/Website-Live_Now-green)](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/)
-[![Backend API](https://img.shields.io/badge/API-Render-purple)](https://ai-with-baalu-backend.onrender.com)
+[![Pages](https://img.shields.io/badge/Pages-4%2B-brightgreen)](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/)
+[![SEO](https://img.shields.io/badge/SEO-Optimized-yellow)](sitemap.xml)
+[![Deployment](https://img.shields.io/badge/Deployment-Automated-success)](https://github.com/PAVAN-18-CODER/aiwithbaaluupdates/actions)
 
 ---
 
-## 📱 Live Demo
+## 📱 Live Website
 
-**🌐 Website:** [ai-with-baalu.github.io](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/)
+**🌐 Main Site:** [AI with Baalu](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/)
 
-**⚙️ API Docs:** [Backend API](https://ai-with-baalu-backend.onrender.com/api/health)
+### 📄 Available Pages
+- 🏠 **[Home](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/)** - AI News & Tools Feed
+- 🛡️ **[IoT Fraud Detection](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/iot-fraud-detection.html)** - Advanced Security System
+- ℹ️ **[About](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/about.html)** - Our Mission & Vision
+- 🔧 **[Services](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/services.html)** - Complete Service Offerings
+- 📊 **[Dashboard](https://PAVAN-18-CODER.github.io/aiwithbaaluupdates/pa1.html)** - Analytics & Monitoring
+
+**⚙️ Sitemap:** [sitemap.xml](sitemap.xml) | **🤖 Robots:** [robots.txt](robots.txt)
 
 ---
 

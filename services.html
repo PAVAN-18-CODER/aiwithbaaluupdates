@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI with Baalu Services - Comprehensive solutions in AI, machine learning, IoT security, and data science for enterprises and organizations.">
+    <meta name="keywords" content="AI services, machine learning development, IoT security, data science, consulting, development">
+    <meta name="author" content="AI with Baalu">
+    <meta property="og:title" content="Services - AI with Baalu">
+    <meta property="og:description" content="Comprehensive AI, ML, and IoT security solutions tailored to your needs">
+    <meta property="og:type" content="website">
+    <title>Services - AI with Baalu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --bg: #ffffff;
+            --text: #333333;
+            --card-bg: #f9fafb;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        /* Service Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2.5rem;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        .service-features li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--border);
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step-box h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .services-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span>🤖</span>
+                AI with Baalu
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="iot-fraud-detection.html">IoT Security</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="index.html">Home</a> / <span>Services</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Comprehensive AI, ML, and Security Solutions</p>
+        </div>
+    </section>
+
+    <!-- Main Services -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Build intelligent systems that learn from data and improve over time. From predictive analytics to computer vision.</p>
+                    <ul class="service-features">
+                        <li>Predictive Analytics</li>
+                        <li>Computer Vision</li>
+                        <li>Natural Language Processing</li>
+                        <li>Deep Learning Models</li>
+                        <li>ML Pipeline Design</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>IoT Fraud Detection</h3>
+                    <p>Protect your IoT ecosystem with real-time anomaly detection and behavioral analysis powered by machine learning.</p>
+                    <ul class="service-features">
+                        <li>Real-time Monitoring</li>
+                        <li>Anomaly Detection</li>
+                        <li>Threat Analysis</li>
+                        <li>Alert Systems</li>
+                        <li>Security Reports</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Science & Analytics</h3>
+                    <p>Transform raw data into actionable insights with advanced analytics and visualization strategies.</p>
+                    <ul class="service-features">
+                        <li>Data Mining</li>
+                        <li>Statistical Analysis</li>
+                        <li>Data Visualization</li>
+                        <li>Business Intelligence</li>
+                        <li>Pattern Discovery</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">🔐</div>
+                    <h3>Cybersecurity Solutions</h3>
+                    <p>Comprehensive security infrastructure design and implementation for data protection and threat mitigation.</p>
+                    <ul class="service-features">
+                        <li>Security Audits</li>
+                        <li>Threat Detection</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Incident Response</li>
+                        <li>Compliance Management</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>System Architecture</h3>
+                    <p>Design and implement scalable, robust systems that grow with your business needs and handle massive data volumes.</p>
+                    <ul class="service-features">
+                        <li>Cloud Architecture</li>
+                        <li>Microservices Design</li>
+                        <li>Database Optimization</li>
+                        <li>Scalability Planning</li>
+                        <li>Performance Tuning</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Consulting & Training</h3>
+                    <p>Expert guidance on AI implementation, best practices, and team training to accelerate your digital transformation.</p>
+                    <ul class="service-features">
+                        <li>AI Strategy</li>
+                        <li>Technical Consulting</li>
+                        <li>Team Training</li>
+                        <li>Best Practices</li>
+                        <li>Change Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="section" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-steps">
+                <div class="step-box">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Understand your business goals, challenges, and requirements in detail</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">2</div>
+                    <h3>Assessment</h3>
+                    <p>Evaluate current systems and identify opportunities for improvement</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">3</div>
+                    <h3>Design</h3>
+                    <p>Create comprehensive solution architecture tailored to your needs</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">4</div>
+                    <h3>Implementation</h3>
+                    <p>Build and deploy the solution with best practices and quality assurance</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">5</div>
+                    <h3>Monitoring</h3>
+                    <p>Continuous monitoring and optimization for peak performance</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">6</div>
+                    <h3>Support</h3>
+                    <p>Ongoing support and maintenance to ensure long-term success</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                We work with industry-leading technologies and frameworks to deliver cutting-edge solutions:
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🐍</div>
+                    <h3>Languages & Frameworks</h3>
+                    <ul class="service-features">
+                        <li>Python 3.11+</li>
+                        <li>JavaScript/TypeScript</li>
+                        <li>Go</li>
+                        <li>Java</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3>ML & Data Libraries</h3>
+                    <ul class="service-features">
+                        <li>TensorFlow/Keras</li>
+                        <li>PyTorch</li>
+                        <li>Scikit-learn</li>
+                        <li>XGBoost</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Platforms</h3>
+                    <ul class="service-features">
+                        <li>AWS</li>
+                        <li>Google Cloud</li>
+                        <li>Azure</li>
+                        <li>Docker & Kubernetes</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🗄️</div>
+                    <h3>Databases</h3>
+                    <ul class="service-features">
+                        <li>PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>Redis</li>
+                        <li>Elasticsearch</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>Integration & APIs</h3>
+                    <ul class="service-features">
+                        <li>REST APIs</li>
+                        <li>Apache Kafka</li>
+                        <li>RabbitMQ</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Security Tools</h3>
+                    <ul class="service-features">
+                        <li>OWASP Standards</li>
+                        <li>SSL/TLS</li>
+                        <li>OAuth 2.0</li>
+                        <li>SIEM Tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Ready to Transform Your Business?</h2>
+                <p style="margin: 1rem 0; font-size: 1.1rem;">Let's discuss how our services can help you achieve your goals.</p>
+                <button class="cta-button">Get in Touch</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI with Baalu</h3>
+            <p>Transforming Business Through AI Innovation</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="iot-fraud-detection.html">IoT Security</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">
+                © 2026 AI with Baalu. All rights reserved. | 
+                <a href="https://github.com/PAVAN-18-CODER/aiwithbaaluupdates" style="color: white; text-decoration: underline;">GitHub Repository</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
