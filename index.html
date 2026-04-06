@@ -2624,39 +2624,275 @@
             }
         ];
 
-        // Sample Tools Data
+        // Comprehensive AI Tools Data with Detailed Information
         const toolsData = [
             {
                 icon: '🤖',
                 name: 'ChatGPT',
-                description: 'Advanced conversational AI for any task'
+                description: 'OpenAI\'s advanced conversational AI assistant powered by GPT-4',
+                category: 'Conversational AI',
+                pricing: 'Free tier available, Plus $20/month',
+                features: ['Natural conversations', 'Code generation', 'Content writing', 'Problem solving', 'Multi-language support'],
+                url: 'https://chat.openai.com',
+                rating: 4.8,
+                users: '100M+'
             },
             {
                 icon: '🎨',
                 name: 'DALL-E 3',
-                description: 'Create stunning images from text descriptions'
+                description: 'Create stunning, photorealistic images from text descriptions with unprecedented accuracy',
+                category: 'Image Generation',
+                pricing: 'Via ChatGPT Plus or API',
+                features: ['Text-to-image', 'High resolution', 'Style control', 'Inpainting', 'Variations'],
+                url: 'https://openai.com/dall-e-3',
+                rating: 4.7,
+                users: '10M+'
             },
             {
                 icon: '💻',
                 name: 'GitHub Copilot',
-                description: 'AI-powered code completion and generation'
+                description: 'AI pair programmer that suggests code and entire functions in real-time',
+                category: 'Code Assistant',
+                pricing: '$10/month, Free for students',
+                features: ['Code completion', 'Multi-language', 'Context-aware', 'Test generation', 'Documentation'],
+                url: 'https://github.com/features/copilot',
+                rating: 4.6,
+                users: '5M+'
             },
             {
                 icon: '🔍',
                 name: 'Perplexity AI',
-                description: 'Search engine powered by AI'
+                description: 'AI-powered search engine that provides accurate answers with cited sources',
+                category: 'Search & Research',
+                pricing: 'Free, Pro $20/month',
+                features: ['Real-time search', 'Source citations', 'Follow-up questions', 'Multi-modal', 'Research mode'],
+                url: 'https://www.perplexity.ai',
+                rating: 4.5,
+                users: '10M+'
             },
             {
                 icon: '📊',
                 name: 'MidJourney',
-                description: 'Professional AI art generation'
+                description: 'Professional-grade AI art generation with stunning artistic styles',
+                category: 'Image Generation',
+                pricing: 'From $10/month',
+                features: ['Artistic styles', 'High quality', 'Variations', 'Upscaling', 'Community gallery'],
+                url: 'https://www.midjourney.com',
+                rating: 4.9,
+                users: '15M+'
             },
             {
                 icon: '🎬',
                 name: 'Synthesia',
-                description: 'Create AI videos with avatars'
+                description: 'Create professional AI videos with realistic avatars in minutes',
+                category: 'Video Generation',
+                pricing: 'From $30/month',
+                features: ['AI avatars', '120+ languages', 'Custom avatars', 'Screen recording', 'Templates'],
+                url: 'https://www.synthesia.io',
+                rating: 4.7,
+                users: '50K+'
+            },
+            {
+                icon: '✍️',
+                name: 'Jasper AI',
+                description: 'AI content platform for marketing teams to create on-brand content',
+                category: 'Content Writing',
+                pricing: 'From $49/month',
+                features: ['Marketing copy', 'SEO optimization', 'Brand voice', 'Templates', 'Team collaboration'],
+                url: 'https://www.jasper.ai',
+                rating: 4.5,
+                users: '100K+'
+            },
+            {
+                icon: '🎵',
+                name: 'Murf AI',
+                description: 'Generate studio-quality voiceovers with AI voices in 20+ languages',
+                category: 'Voice & Audio',
+                pricing: 'From $19/month',
+                features: ['120+ voices', 'Voice cloning', 'Pitch control', 'Emphasis', 'Background music'],
+                url: 'https://murf.ai',
+                rating: 4.6,
+                users: '4M+'
+            },
+            {
+                icon: '📝',
+                name: 'Notion AI',
+                description: 'AI-powered workspace for notes, docs, and knowledge management',
+                category: 'Productivity',
+                pricing: '$10/month add-on',
+                features: ['Writing assistant', 'Summarization', 'Translation', 'Action items', 'Q&A'],
+                url: 'https://www.notion.so/product/ai',
+                rating: 4.7,
+                users: '30M+'
+            },
+            {
+                icon: '🎯',
+                name: 'Copy.ai',
+                description: 'AI copywriting tool for marketing content and sales copy',
+                category: 'Content Writing',
+                pricing: 'Free tier, Pro $49/month',
+                features: ['90+ templates', 'Blog posts', 'Social media', 'Email copy', 'Product descriptions'],
+                url: 'https://www.copy.ai',
+                rating: 4.4,
+                users: '10M+'
+            },
+            {
+                icon: '🖼️',
+                name: 'Canva AI',
+                description: 'Design platform with AI-powered tools for graphics and presentations',
+                category: 'Design',
+                pricing: 'Free, Pro $12.99/month',
+                features: ['Magic Design', 'Background remover', 'Text to image', 'Templates', 'Brand kit'],
+                url: 'https://www.canva.com',
+                rating: 4.8,
+                users: '135M+'
+            },
+            {
+                icon: '🔊',
+                name: 'ElevenLabs',
+                description: 'Most realistic AI voice generator and text-to-speech software',
+                category: 'Voice & Audio',
+                pricing: 'Free tier, From $5/month',
+                features: ['Voice cloning', '29 languages', 'Emotion control', 'Sound effects', 'Dubbing'],
+                url: 'https://elevenlabs.io',
+                rating: 4.8,
+                users: '1M+'
+            },
+            {
+                icon: '📹',
+                name: 'Runway ML',
+                description: 'AI-powered video editing and generation platform for creators',
+                category: 'Video Generation',
+                pricing: 'Free tier, From $12/month',
+                features: ['Text to video', 'Green screen', 'Motion tracking', 'Inpainting', '30+ AI tools'],
+                url: 'https://runwayml.com',
+                rating: 4.6,
+                users: '10M+'
+            },
+            {
+                icon: '🧠',
+                name: 'Claude',
+                description: 'Anthropic\'s AI assistant focused on safety and helpfulness',
+                category: 'Conversational AI',
+                pricing: 'Free, Pro $20/month',
+                features: ['Long context', 'Document analysis', 'Coding', 'Research', 'Safe responses'],
+                url: 'https://claude.ai',
+                rating: 4.7,
+                users: '5M+'
+            },
+            {
+                icon: '🎤',
+                name: 'Descript',
+                description: 'All-in-one video and podcast editing powered by AI',
+                category: 'Video & Audio Editing',
+                pricing: 'Free tier, From $12/month',
+                features: ['Transcription', 'Overdub', 'Studio sound', 'Filler word removal', 'Screen recording'],
+                url: 'https://www.descript.com',
+                rating: 4.7,
+                users: '1M+'
+            },
+            {
+                icon: '🌐',
+                name: 'DeepL',
+                description: 'World\'s most accurate AI translator supporting 31 languages',
+                category: 'Translation',
+                pricing: 'Free, Pro from $8.74/month',
+                features: ['31 languages', 'Document translation', 'Glossary', 'Tone adjustment', 'API access'],
+                url: 'https://www.deepl.com',
+                rating: 4.9,
+                users: '1B+ translations'
+            },
+            {
+                icon: '📊',
+                name: 'Tableau AI',
+                description: 'AI-powered data analytics and visualization platform',
+                category: 'Data Analytics',
+                pricing: 'From $70/month',
+                features: ['Natural language queries', 'Auto insights', 'Predictive analytics', 'Dashboards', 'Data prep'],
+                url: 'https://www.tableau.com',
+                rating: 4.5,
+                users: '100K+'
+            },
+            {
+                icon: '🎨',
+                name: 'Stable Diffusion',
+                description: 'Open-source AI image generation model with full control',
+                category: 'Image Generation',
+                pricing: 'Free (open-source)',
+                features: ['Text-to-image', 'Image-to-image', 'Inpainting', 'Customizable', 'Local deployment'],
+                url: 'https://stability.ai',
+                rating: 4.6,
+                users: '10M+'
+            },
+            {
+                icon: '💼',
+                name: 'Grammarly',
+                description: 'AI writing assistant for grammar, spelling, and style',
+                category: 'Writing Assistant',
+                pricing: 'Free, Premium $12/month',
+                features: ['Grammar check', 'Tone detection', 'Plagiarism', 'Style suggestions', 'Browser extension'],
+                url: 'https://www.grammarly.com',
+                rating: 4.6,
+                users: '30M+'
+            },
+            {
+                icon: '🔬',
+                name: 'Consensus',
+                description: 'AI-powered search engine for scientific research papers',
+                category: 'Research',
+                pricing: 'Free, Premium $8.99/month',
+                features: ['Paper search', 'Evidence extraction', 'Citations', 'Summaries', 'Research assistant'],
+                url: 'https://consensus.app',
+                rating: 4.7,
+                users: '2M+'
+            },
+            {
+                icon: '🎮',
+                name: 'Leonardo AI',
+                description: 'AI art generator for game assets, concept art, and illustrations',
+                category: 'Image Generation',
+                pricing: 'Free tier, From $10/month',
+                features: ['Game assets', 'Consistent characters', 'Canvas editor', 'Training models', 'Community'],
+                url: 'https://leonardo.ai',
+                rating: 4.7,
+                users: '5M+'
+            },
+            {
+                icon: '📧',
+                name: 'Superhuman',
+                description: 'AI-powered email client for blazingly fast email management',
+                category: 'Productivity',
+                pricing: '$30/month',
+                features: ['AI triage', 'Auto-replies', 'Snippets', 'Read statuses', 'Keyboard shortcuts'],
+                url: 'https://superhuman.com',
+                rating: 4.8,
+                users: '500K+'
+            },
+            {
+                icon: '🎭',
+                name: 'HeyGen',
+                description: 'Create professional videos with AI avatars and voices',
+                category: 'Video Generation',
+                pricing: 'Free tier, From $24/month',
+                features: ['AI avatars', 'Voice cloning', '40+ languages', 'Templates', 'Custom avatars'],
+                url: 'https://www.heygen.com',
+                rating: 4.6,
+                users: '2M+'
+            },
+            {
+                icon: '🔐',
+                name: 'Otter.ai',
+                description: 'AI meeting assistant that records, transcribes, and summarizes',
+                category: 'Productivity',
+                pricing: 'Free tier, From $10/month',
+                features: ['Live transcription', 'Meeting notes', 'Action items', 'Integrations', 'Search'],
+                url: 'https://otter.ai',
+                rating: 4.5,
+                users: '10M+'
             }
         ];
+
+
 
         // API Configuration
         const NEWS_API_CONFIG = {
@@ -2990,15 +3226,34 @@
             }).join('');
         }
 
-        // Populate Tools
+        // Populate Tools with Detailed Information
         function populateTools() {
             const toolsGrid = document.getElementById('toolsGrid');
             toolsGrid.innerHTML = toolsData.map(tool => `
-                <div class="tool-card">
+                <div class="tool-card" data-category="${tool.category}">
                     <div class="tool-icon">${tool.icon}</div>
                     <h3>${tool.name}</h3>
+                    <p class="tool-category" style="color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">${tool.category}</p>
                     <p>${tool.description}</p>
-                    <a href="#" class="tool-link">Learn More →</a>
+                    <div class="tool-details" style="margin: 1rem 0; padding: 1rem; background: rgba(99, 102, 241, 0.05); border-radius: 8px; font-size: 0.9rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="color: #f59e0b;">⭐</span>
+                            <span style="font-weight: 600;">${tool.rating}/5.0</span>
+                            <span style="opacity: 0.7;">• ${tool.users} users</span>
+                        </div>
+                        <div style="margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">💰 Pricing:</span> ${tool.pricing}
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <span style="font-weight: 600; display: block; margin-bottom: 0.5rem;">✨ Key Features:</span>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                ${tool.features.slice(0, 3).map(feature => `
+                                    <span style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;">${feature}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="tool-link" style="margin-top: auto;">Try ${tool.name} →</a>
                 </div>
             `).join('');
         }
@@ -3051,15 +3306,34 @@
             showSuccessMessage(`Found ${results.length} articles`);
         }
 
-        // Populate Tools
+        // Populate Tools with Detailed Information
         function populateTools() {
             const toolsGrid = document.getElementById('toolsGrid');
             toolsGrid.innerHTML = toolsData.map(tool => `
-                <div class="tool-card">
+                <div class="tool-card" data-category="${tool.category}">
                     <div class="tool-icon">${tool.icon}</div>
                     <h3>${tool.name}</h3>
+                    <p class="tool-category" style="color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">${tool.category}</p>
                     <p>${tool.description}</p>
-                    <a href="#" class="tool-link">Learn More →</a>
+                    <div class="tool-details" style="margin: 1rem 0; padding: 1rem; background: rgba(99, 102, 241, 0.05); border-radius: 8px; font-size: 0.9rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="color: #f59e0b;">⭐</span>
+                            <span style="font-weight: 600;">${tool.rating}/5.0</span>
+                            <span style="opacity: 0.7;">• ${tool.users} users</span>
+                        </div>
+                        <div style="margin-bottom: 0.5rem;">
+                            <span style="font-weight: 600;">💰 Pricing:</span> ${tool.pricing}
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <span style="font-weight: 600; display: block; margin-bottom: 0.5rem;">✨ Key Features:</span>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                ${tool.features.slice(0, 3).map(feature => `
+                                    <span style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;">${feature}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="tool-link" style="margin-top: auto;">Try ${tool.name} →</a>
                 </div>
             `).join('');
         }
