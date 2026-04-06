@@ -18,7 +18,18 @@ app.use(cors({
   ],
   credentials: true
 }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+// Request logging middleware
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.path} - ${res.statusCode} (${duration}ms)`);
+  });
+  next();
+});
 
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-news-db';
@@ -50,17 +61,87 @@ app.use('/api/tools', toolsRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 app.use('/api/contact', contactRoutes);
 
-// Health check endpoint
+// Health check endpoint with detailed info
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'Backend is running', timestamp: new Date() });
+  res.json({ 
+    status: 'Backend is running',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development'
+  });
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error('Error:', err);
-  res.status(err.status || 500).json({
+// API status endpoint
+app.get('/api/status', (req, res) => {
+  const status = {
+    server: 'operational',
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  };
+  res.json(status);
+});
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({
     success: false,
-    message: err.message || 'Internal Server Error'
+    error: 'Endpoint not found',
+    path: req.path,
+    method: req.method,
+    message: 'Please check the API documentation for available endpoints'
+  });
+});
+
+// Enhanced Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', {
+    message: err.message,
+    stack: err.stack,
+    path: req.path,
+    method: req.method
+  });
+
+  // Mongoose validation error
+  if (err.name === 'ValidationError') {
+    const errors = Object.values(err.errors).map(e => e.message);
+    return res.status(400).json({
+      success: false,
+      error: 'Validation Error',
+      message: 'Please check the provided data',
+      details: errors
+    });
+  }
+
+  // Mongoose duplicate key error
+  if (err.code === 11000) {
+    const field = Object.keys(err.keyPattern)[0];
+    return res.status(409).json({
+      success: false,
+      error: 'Duplicate Entry',
+      message: `A record with this ${field} already exists`,
+      field: field
+    });
+  }
+
+  // JWT errors
+  if (err.name === 'JsonWebTokenError') {
+    return res.status(401).json({
+      success: false,
+      error: 'Authentication Error',
+      message: 'Invalid or expired token'
+    });
+  }
+
+  // Default error response
+  const statusCode = err.status || err.statusCode || 500;
+  const message = err.message || 'Internal Server Error';
+
+  res.status(statusCode).json({
+    success: false,
+    error: true,
+    message: statusCode === 500 ? 'Internal Server Error' : message,
+    ...(process.env.NODE_ENV === 'development' && { details: err.message })
   });
 });
 
@@ -69,6 +150,8 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📚 API Documentation:`);
+  console.log(`   - GET /api/health - Health check`);
+  console.log(`   - GET /api/status - Server status`);
   console.log(`   - GET /api/news - Get all news`);
   console.log(`   - GET /api/news/:id - Get specific news`);
   console.log(`   - POST /api/news - Create news`);
@@ -80,7 +163,8 @@ app.listen(PORT, () => {
   console.log(`   - POST /api/contact/submit - Submit contact form`);
   console.log(`   - GET /api/contact/messages - Get contact messages`);
   console.log(`   - PATCH /api/contact/messages/:id - Update message status`);
-  console.log(`   - GET /api/health - Health check`);
+  console.log(`\n⚙️ Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📦 Database: ${mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'}`);
 });
 
 module.exports = app;

@@ -29,6 +29,7 @@
             --card-bg: #f9fafb;
             --success: #10b981;
             --warning: #f59e0b;
+            --error: #f87171;
         }
 
         body {
@@ -36,6 +37,7 @@
             line-height: 1.6;
             color: var(--text);
             background: var(--bg);
+            scroll-behavior: smooth;
         }
 
         /* Header & Navigation */
@@ -66,6 +68,7 @@
             gap: 0.5rem;
             text-decoration: none;
             color: white;
+            min-width: auto;
         }
 
         .logo-icon {
@@ -75,6 +78,7 @@
         nav {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
@@ -82,10 +86,30 @@
             text-decoration: none;
             transition: opacity 0.3s;
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
         }
 
         nav a:hover {
             opacity: 0.8;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
         }
 
         /* Hero Section */
@@ -100,6 +124,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: bold;
+            word-wrap: break-word;
         }
 
         .hero .tagline {
@@ -117,13 +142,35 @@
             font-size: 1rem;
             cursor: pointer;
             font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
             margin: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .cta-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .cta-button.loading::after {
+            content: ' ⏳';
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Container */
@@ -159,7 +206,8 @@
             border-radius: 10px;
             padding: 2rem;
             border-left: 5px solid var(--primary);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .feature-card:hover {
@@ -170,6 +218,7 @@
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: inline-block;
         }
 
         .feature-card h3 {
@@ -181,6 +230,7 @@
         .feature-card p {
             color: #666;
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* Architecture Section */
@@ -314,6 +364,222 @@
             opacity: 0.7;
         }
 
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1.5rem 2rem;
+            background: var(--dark);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--error);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Responsive - Mobile First */
+        @media (max-width: 480px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                flex-direction: column;
+                background-color: var(--secondary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav a {
+                padding: 1rem;
+                display: block;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.95rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .features-grid,
+            .workflow-steps,
+            .tech-stack,
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.3rem;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .alert {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .toast {
+                right: 1rem;
+                left: 1rem;
+                bottom: 1rem;
+                max-width: none;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .stat {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .workflow-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-button {
+                padding: 0.75rem 1.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Small Tablet */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .workflow-steps, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Large Screens */
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
+
+            nav {
+                display: flex !important;
+                position: relative !important;
+                left: 0 !important;
+                top: auto !important;
+                width: auto !important;
+                flex-direction: row !important;
+                background: none !important;
+                padding: 0 !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -365,9 +631,10 @@
         <div class="header-content">
             <a href="index.html" class="logo">
                 <span class="logo-icon">🛡️</span>
-                IoT Fraud Detection
+                <span>IoT Fraud Detection</span>
             </a>
-            <nav>
+            <button class="menu-toggle" aria-label="Toggle navigation menu" id="menuToggle">☰</button>
+            <nav id="navMenu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
@@ -383,8 +650,8 @@
             <h1>🛡️ IoT Fraud Detection System</h1>
             <p class="tagline">Real-Time Anomaly Detection & Security for IoT Devices</p>
             <p class="tagline" style="font-size: 1rem; opacity: 0.8;">Powered by Machine Learning & Advanced Behavioral Analysis</p>
-            <button class="cta-button">View Demo</button>
-            <button class="cta-button">Documentation</button>
+            <button class="cta-button" id="demoBtn" data-action="demo">View Demo</button>
+            <button class="cta-button" id="docsBtn" data-action="docs">Documentation</button>
         </div>
     </section>
 
@@ -625,5 +892,120 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            });
+
+            // Close menu when a link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        // Toast Notification Function
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Button Click Handlers
+        const demoBtn = document.getElementById('demoBtn');
+        const docsBtn = document.getElementById('docsBtn');
+
+        if (demoBtn) {
+            demoBtn.addEventListener('click', function() {
+                this.classList.add('loading');
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                    this.disabled = false;
+                    showToast('🎬 Demo is loading...', 'success');
+                    // Add your demo functionality here
+                }, 1500);
+            });
+        }
+
+        if (docsBtn) {
+            docsBtn.addEventListener('click', function() {
+                showToast('📚 Opening documentation...', 'success');
+                // Add your documentation link here
+                // window.open('your-docs-url', '_blank');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Keyboard accessibility for buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    button.click();
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and steps
+        document.querySelectorAll('.feature-card, .step, .tech-item, .stat').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
 </body>
 </html>
