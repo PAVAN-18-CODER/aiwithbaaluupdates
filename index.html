@@ -3309,38 +3309,6 @@
             showSuccessMessage(`Found ${results.length} articles`);
         }
 
-        // Populate Tools with Detailed Information
-        function populateTools() {
-            const toolsGrid = document.getElementById('toolsGrid');
-            toolsGrid.innerHTML = toolsData.map(tool => `
-                <div class="tool-card" data-category="${tool.category}">
-                    <div class="tool-icon">${tool.icon}</div>
-                    <h3>${tool.name}</h3>
-                    <p class="tool-category" style="color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">${tool.category}</p>
-                    <p>${tool.description}</p>
-                    <div class="tool-details" style="margin: 1rem 0; padding: 1rem; background: rgba(99, 102, 241, 0.05); border-radius: 8px; font-size: 0.9rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                            <span style="color: #f59e0b;">⭐</span>
-                            <span style="font-weight: 600;">${tool.rating}/5.0</span>
-                            <span style="opacity: 0.7;">• ${tool.users} users</span>
-                        </div>
-                        <div style="margin-bottom: 0.5rem;">
-                            <span style="font-weight: 600;">💰 Pricing:</span> ${tool.pricing}
-                        </div>
-                        <div style="margin-top: 0.75rem;">
-                            <span style="font-weight: 600; display: block; margin-bottom: 0.5rem;">✨ Key Features:</span>
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                                ${tool.features.slice(0, 3).map(feature => `
-                                    <span style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem;">${feature}</span>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                    <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="tool-link" style="margin-top: auto;">Try ${tool.name} →</a>
-                </div>
-            `).join('');
-        }
-
         // Newsletter Signup
         function handleNewsletterSignup(event) {
             event.preventDefault();
